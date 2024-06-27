@@ -8,7 +8,7 @@ const fetchDataRetry = async (url, retries) => {
             const data = await fetch(url);
 
             if (!data.ok) {
-                throw new Error('Error fetching');
+                throw new Error(`Error fetching! Status: ${data.status}`);
             }
             return await data.json();
         } catch (error) {
