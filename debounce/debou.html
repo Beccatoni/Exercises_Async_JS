@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <input type="text">
+    <div>
+        <b>Default: </b>
+        <span id="default"></span>
+    </div>
+    <div>
+        <b>Debounce</b>
+        <span id="debounce"></span>
+    </div>
+    <div>
+        <b>Throttle</b>
+        <span id="throttle"></span>
+    </div>
+
+    <script defer>
+    let deb = document.getElementById('debounce');
+    let def = document.getElementById('default');
+    let thro = document.getElementById('throttle');
+    let input = document.querySelector('input')
+
+    const updateDebounceText = debounce((text)=> {
+        deb.textContent = text
+    })
+    input.addEventListener('input', e=>{
+        def.textContent = e.target.value;
+        updateDebounceText(e.target.value)
+    })
+
+    function debounce(cb, delay=1000){
+        let timeout;
+           return (...args)=>{
+            clearTimeout(timeout)
+            timeout = setTimeout(()=>{
+                cb(...args)
+            }, delay)
+           }
+    }
+
+    function throttle (c){
+
+    }
+    // https://www.youtube.com/watch?v=cjIswDCKgu0
+
+    </script>
+</body>
+</html>
